@@ -173,8 +173,8 @@ String JsonSerialization()
   DynamicJsonDocument doc(8192);
   String message;
   doc["timestamp"] = 1670987434289;
-  doc["id"] = "21ac9d80-76cc-****-****-b3b116d640e2";
-  doc["asset"]["id"] = "21ac9d80-76cc-****-****-b3b116d640e2";
+  doc["id"] = "21ac9d80-****-****-****-b3b116d640e2";
+  doc["asset"]["id"] = "21ac9d80-****-****-****-b3b116d640e2";
   doc["asset"]["manufacturer"] = "esp32-wroom-32e";
   doc["location"]["timestamp"] = 1670987434289;
   //Change the id by your own
