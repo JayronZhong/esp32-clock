@@ -35,7 +35,8 @@ NTPClient timeClient(ntpUDP, "ntp.ntsc.ac.cn", 8*3600, 1); // NTP client
 
 u8g2_uint_t offset;
 u8g2_uint_t width;
-const char *text = "S.T.F.A HYTPS";
+const char *text = "";
+//The text will be shown when it is booting
 short year,month,day,hour,minute,second;
 
 struct ap_info
