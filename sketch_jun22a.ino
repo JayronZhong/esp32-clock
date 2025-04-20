@@ -24,8 +24,9 @@ RtcDS1302<ThreeWire> Rtc(myWire);
 
 
 // WiFi and NTP setup
-const char* ssid = "abcde";
-const char* password = "88888888";
+/*const char* ssid = "abcde";
+const char* password = "88888888";*/
+//You may add your own WiFi
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "ntp.ntsc.ac.cn", 8*3600, 1); // NTP client
 
@@ -172,10 +173,11 @@ String JsonSerialization()
   DynamicJsonDocument doc(8192);
   String message;
   doc["timestamp"] = 1670987434289;
-  doc["id"] = "21ac9d80-76cc-11ed-a08e-b3b116d640e2";
-  doc["asset"]["id"] = "21ac9d80-76cc-11ed-a08e-b3b116d640e2";
+  doc["id"] = "21ac9d80-76cc-****-****-b3b116d640e2";
+  doc["asset"]["id"] = "21ac9d80-76cc-****-****-b3b116d640e2";
   doc["asset"]["manufacturer"] = "esp32-wroom-32e";
   doc["location"]["timestamp"] = 1670987434289;
+  //Change the id by your own
   for(short i = 0;i < apinfo.count;i++)
   {
     doc["location"]["wifis"][i]["macAddress"] = WiFi.BSSIDstr(i);
@@ -206,7 +208,8 @@ void get_location(String postMessage)
 {
   DynamicJsonDocument rep(8192);
   HTTPClient http;
-  http.begin("https://api.newayz.com/location/hub/v1/track_points?access_key=AYnBeWnbqMxJkHBGSePPAKtLKvPhwlqD");      
+  //http.begin("https://api.newayz.com/location/hub/v1/track_points?access_key="); 
+  //You may add your own api
   http.addHeader("Content-Type", "application/json");
   http.addHeader("Host", "api.newayz.com");
   http.addHeader("Connection", "keep-alive");
@@ -265,7 +268,8 @@ void get_location_city()
 {
   DynamicJsonDocument rep(8192);
   HTTPClient http;
-  std::string s = "https://api.seniverse.com/v3/weather/daily.json?key=SnGazOsA34JyDMp70&location=" + std::to_string(latitude) + ":" + std::to_string(longitude) + "&language=zh-Hans";
+  std::string s = "https://api.seniverse.com/v3/weather/daily.json?key=&location=" + std::to_string(latitude) + ":" + std::to_string(longitude) + "&language=zh-Hans";
+  //Change the key by your own
   http.begin(s.c_str()); 
   Serial.println(F(s.c_str()));     
   short httpCode = http.GET();
